@@ -112,8 +112,26 @@
                     </li>
                   </ul>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" data-toggle="dropdown" href="#">
+                        <i class="fa fa-gear fa-fw"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="dropdown-item" href="<?=base_url()?>welcome/ver_perfil"><i class="fa fa-user fa-fw"></i> Mi perfil</a>
+                        </li>
+                        <li><a class="dropdown-item" href="<?=base_url()?>welcome/cambiar_password"><i class="fa fa-key fa-fw"></i> Cambiar contraseña</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#"><i class="fa fa-gear fa-fw"></i> Opciones</a>
+                        </li>
+                        
+                    </ul>
+                    <!-- /.dropdown-user -->
+          </li>
+
+
                 <!-- Logout    -->
-                <li class="nav-item"><a href="<?=base_url()?>login/logout" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                <li class="nav-item"><a href="<?=base_url()?>login/logout" class="nav-link logout">Salir<i class="fa fa-sign-out"></i></a></li>
               </ul>
             </div>
           </div>
