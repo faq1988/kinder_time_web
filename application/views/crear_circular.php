@@ -2,7 +2,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom"><i class="fa fa-phone"></i> Contacto</h2>
+              <h2 class="no-margin-bottom"><i class="fa fa-commenting-o"></i> Crear circular</h2>
             </div>
           </header>
           <!-- Breadcrumb-->
@@ -28,44 +28,25 @@
                       <h3 class="h4">Contacto</h3>
                     </div-->
                     <div class="card-body">
-                      <?php //echo validation_errors(); ?>
-
-                      <p>Por favor ingrese los datos requeridos para realizar su consulta</p>
-                      <form action="<?=base_url()?>Sistema_controller/nuevo_contacto" method="POST">
+                      <p>Por favor ingrese los datos requeridos para enviar una nueva circular</p>
+                      <form action="<?=base_url()?>Menu_semanal_controller/agregar_menu" method="POST">
                          <div class="form-group">       
-                          <label class="form-control-label">Nombre</label>
-                          <input type="text" name="nombre" value="<?php echo set_value('nombre'); ?>"
-                          placeholder="Nombre" class="form-control">
-                          <?php echo form_error('nombre', '<span style="color:red">', '</span>'); ?>
+                          <label class="form-control-label">Fecha</label>
+                          <input type="date" name="fecha" placeholder="Fecha" class="form-control">
                         </div>
-
+                       
                          <div class="form-group">       
-                          <label class="form-control-label">Apellido</label>
-                          <input type="text" name="apellido" value="<?php echo set_value('apellido'); ?>"
-                          placeholder="Apellido" class="form-control">
-                          <?php echo form_error('apellido', '<span style="color:red">', '</span>'); ?>
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label">Email</label>
-                          <input type="email" name="email" value="<?php echo set_value('email'); ?>"
-                          placeholder="Email" class="form-control">
-                          <?php echo form_error('email', '<span style="color:red">', '</span>'); ?>
-                        </div>
-                         <div class="form-group">       
-                          <label class="form-control-label">Teléfono</label>
-                          <input type="text" name="telefono" value="<?php echo set_value('telefono'); ?>"
-                          placeholder="Teléfono" class="form-control">
-                          <?php echo form_error('telefono', '<span style="color:red">', '</span>'); ?>
-                        </div>
+                          <label class="form-control-label">Asunto</label>
+                          <input type="text" name="asunto" placeholder="Asunto" class="form-control">
+                        </div>                       
                          <div class="form-group">       
                           <label class="form-control-label">Comentario</label>
-                          <textarea name="comentario" value="<?php echo set_value('comentario'); ?>"
-                            placeholder="Comentario" class="form-control"></textarea>
-                          <?php echo form_error('comentario', '<span style="color:red">', '</span>'); ?>
+                          <textarea name="comentario" placeholder="Comentario" class="form-control"></textarea>
                         </div>
+                       
                         <center>
                         <div class="form-group">       
-                          <input type="submit" value="Enviar" class="btn btn-primary">
+                          <input type="submit" value="Aceptar" class="btn btn-primary">
                         </div>
                         </center>
                       </form>

@@ -15,19 +15,33 @@ class Sistema_controller extends CI_Controller {
   public function nuevo_contacto()
   {
        
-    
-      $data = array(        
-      'nombre' => $this->input->post('nombre'),      
-      'apellido' => $this->input->post('apellido'),      
-      'email' => $this->input->post('email'),   
-      'telefono' => $this->input->post('telefono'),
-      'comentario' => $this->input->post('comentario'),      
+      $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+      $this->form_validation->set_rules('apellido', 'Apellido', 'required',
+        array('required' => 'El campo %s es obligatorio.'));      
+      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+      $this->form_validation->set_rules('telefono', 'Teléfono', 'numeric');
+      $this->form_validation->set_rules('comentario', 'Comentario', 'required');
 
-      );
-            
-      $this->Sistema_model->crear_contacto($data);
+      if ($this->form_validation->run() == FALSE)      
+      {
+          $menu['rol']= $this->session->userdata('rol');         
+          $this -> load -> view('header');
+          $this -> load -> view('menu', $menu);
+          $this -> load -> view('contacto');
+      } 
+      else
+      {
+        $data = array(        
+        'nombre' => $this->input->post('nombre'),      
+        'apellido' => $this->input->post('apellido'),      
+        'email' => $this->input->post('email'),   
+        'telefono' => $this->input->post('telefono'),
+        'comentario' => $this->input->post('comentario'),      
+        );
 
-      redirect(welcome);
+        $this->Sistema_model->crear_contacto($data);
+        redirect(welcome);
+      }
   }
 
 

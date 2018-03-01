@@ -22,6 +22,22 @@
                       <h3 class="h4">Circulares</h3>
                     </div-->
                     <div class="card-body">
+
+                       <div class="row">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" >
+
+                                        <div class="list-group list-group-horizontal" style="display: inline-block">
+                                            <a href="<?=base_url()?>Welcome/crear_circular" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-plus"></i> Crear</a>                                                                                                               
+                                        </div>
+
+                                    </div>
+
+
+                              </div>
+
+                            </br>
+
                       <table class="table">
                         <thead>                          
                           <tr>

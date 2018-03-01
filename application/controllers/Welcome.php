@@ -80,7 +80,7 @@ class Welcome extends CI_Controller {
     
     $this -> load -> view('header');
     $this -> load -> view('menu', $menu);
-	$this -> load -> view('contacto');
+	  $this -> load -> view('contacto');
   }
 
   public function crear_evento()
@@ -589,4 +589,23 @@ class Welcome extends CI_Controller {
      $this -> load -> view('menu', $menu);     
    $this -> load -> view('crear_establecimiento');
   } 
+
+
+   public function crear_circular()
+  {
+    if (!$this->session->userdata('username'))
+    {
+      redirect('login');
+    }
+
+    $menu['rol']= $this->session->userdata('rol');
+
+  
+     $this -> load -> view('header');
+     $this -> load -> view('menu', $menu);     
+   $this -> load -> view('crear_circular');
+  } 
+
+
+
 }

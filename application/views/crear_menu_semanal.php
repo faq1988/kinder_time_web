@@ -2,7 +2,7 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom"><i class="fa fa-phone"></i> Crear menú</h2>
+              <h2 class="no-margin-bottom"><i class="fa fa-cutlery"></i> Crear menú</h2>
             </div>
           </header>
           <!-- Breadcrumb-->
