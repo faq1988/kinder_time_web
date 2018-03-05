@@ -13,12 +13,12 @@
             </ul>
           </div-->
 
-          <section class="tables">   
+          <section class="tables">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="card">
-                   
+
                     <!--div class="card-header d-flex align-items-center">
                       <h3 class="h4">Alumnos</h3>
                     </div-->
@@ -32,7 +32,7 @@
                                             <a href="<?=base_url()?>Welcome/crear_alumno" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-plus"></i> Crear</a>
                                             <a href="<?=base_url()?>Welcome/buscar_autorizaciones" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-bullhorn"></i> Autorizaciones</a>
                                             <a href="<?=base_url()?>Welcome/buscar_inasistencias" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-check-square-o"></i> Inasistencias</a>
-                                            
+
                                         </div>
 
                                     </div>
@@ -43,7 +43,7 @@
                             </br>
 
                       <table class="table">
-                        <thead>                          
+                        <thead>
                           <tr>
                             <th>#</th>
                             <th>DNI</th>
@@ -62,23 +62,24 @@
                               <td><?php echo $alumnos[$i]->apellido;?>, <?php echo $alumnos[$i]->nombre;?></td>
                               <td><?php echo $alumnos[$i]->edad;?></td>
                               <td>
-                                <a href="<?php echo base_url() ?>Welcome/ver_alumno/<?php echo $alumnos[$i]->id; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>                   
+                                <a href="<?php echo base_url() ?>Welcome/ver_alumno/<?php echo $alumnos[$i]->id; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>
+                                <a href="<?php echo base_url() ?>Welcome/crear_editar_tutor/<?php echo $alumnos[$i]->id; ?>"> <i title="Agregar/Editar Tutor" class="fa fa-fw fa-user-circle"></i></a>
                                 <a href="<?php echo base_url() ?>Alumno_controller/eliminar_alumno/<?php echo $alumnos[$i]->id; ?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
                               </td>
                           </tr>
                           <?php } }?>
-                         
+
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
-               
+
               </div>
             </div>
           </section>
           <!-- Page Footer-->
-         
+
          <?php include 'footer.php';?>
 
 

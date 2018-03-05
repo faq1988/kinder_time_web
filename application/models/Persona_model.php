@@ -30,7 +30,7 @@ function crear_persona($data, $tipo){
         }
 
   function obtener_persona_por_id($id){
-      $this->db->where('id=',$id);      
+      $this->db->where('id=',$id);
       $query = $this->db->get('persona');
       if ($query->num_rows() >0 ) return $query;//->result();
         }
@@ -59,12 +59,9 @@ function eliminar_persona($id)
 
   function obtener_tutores ($id_persona)
   {
-      $this->db->select('u.id, p.vinculo, u.apellido, u.nombre');
-      $this->db->from('persona u');
-      $this->db->join('hijos_por_tutores p', 'p.id_tutor = u.id', 'left');    
-      $this->db->where('p.id_alumno =', $id_persona);    
-      $query = $this->db->get();
-      if ($query->num_rows() >0 ) return $query;//->result();
+      $qry="SELECT * FROM persona p JOIN hijos_por_tutores ht ON (p.id=id_tutor AND id_alumno={$id_persona});";
+      $res=$this->db->query($qry);
+      if ($res->num_rows() >0 ) return $res -> row_array();//->result();
   }
 
 

@@ -22,8 +22,8 @@ class Welcome extends CI_Controller {
     $header['ultimos_mensajes']= $ultimos_mensajes->result();
     $menu['rol']= $this->session->userdata('rol');
 
-	
-    
+
+
     $this -> load -> view('header', $header);
     $this -> load -> view('menu', $menu);
 	$this -> load -> view('estadisticas');
@@ -46,7 +46,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
 	$this -> load -> view('eventos', $data);
   }
 
@@ -60,12 +60,35 @@ class Welcome extends CI_Controller {
 
     $menu['rol']= $this->session->userdata('rol');
 
-	
+
      $this -> load -> view('header');
-     $this -> load -> view('menu', $menu);     
+     $this -> load -> view('menu', $menu);
 	 $this -> load -> view('crear_alumno');
   }
 
+	public function crear_editar_tutor($args)
+ {
+	 if (!$this->session->userdata('username'))
+	 {
+		 redirect('login');
+	 }
+
+	 $menu['rol']= $this->session->userdata('rol');
+
+	 //verifico si el alumno tiene cargado un tutores
+	 //si tiene tutor precargo los datos
+	 $this -> load -> model('Persona_model');
+	 if($args[0])
+	 		$tutor=$this -> Persona_model -> obtener_tutores($args[0]);
+	 else {
+	 	//MENSAJE DE ERROR 404
+	 }
+	 $data=array();
+	 $data['tutor']=$tutor;
+		$this -> load -> view('header');
+		$this -> load -> view('menu', $menu);
+		$this -> load -> view('crear_editar_tutor',$data);
+ }
 
   public function contacto()
   {
@@ -76,8 +99,8 @@ class Welcome extends CI_Controller {
 
     $menu['rol']= $this->session->userdata('rol');
 
-	
-    
+
+
     $this -> load -> view('header');
     $this -> load -> view('menu', $menu);
 	  $this -> load -> view('contacto');
@@ -100,7 +123,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
 	$this -> load -> view('crear_evento', $data);
   }
 
@@ -123,8 +146,8 @@ class Welcome extends CI_Controller {
 
 		$menu['rol']= $this->session->userdata('rol');
 
-	
-    
+
+
 		$this -> load -> view('header');
 		$this -> load -> view('menu', $menu);
 		$this -> load -> view('menu_semanal', $data);
@@ -141,7 +164,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('crear_maestro');
   }
 
@@ -162,7 +185,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('buscar_alumno', $data);
   }
 
@@ -183,7 +206,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('buscar_maestro', $data);
   }
 
@@ -207,7 +230,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('mensajes_alumnos', $data);
   }
 
@@ -222,7 +245,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('galeria');
   }
 
@@ -245,7 +268,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('clases', $data);
   }
 
@@ -268,7 +291,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('autorizaciones', $data);
   }
 
@@ -282,7 +305,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('estadisticas');
   }
 
@@ -305,7 +328,7 @@ class Welcome extends CI_Controller {
     $data['rol']= 'MAESTRO';
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('crear_usuario', $data);
   }
 
@@ -327,7 +350,7 @@ class Welcome extends CI_Controller {
     $data['perfil']= $perfil->result();
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('perfil', $data);
   }
 
@@ -349,7 +372,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('inasistencias', $data);
   }
 
@@ -372,7 +395,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('buscar_aula', $data);
   }
 
@@ -393,7 +416,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
     $this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('ver_alumno', $data);
   }
 
@@ -412,7 +435,7 @@ class Welcome extends CI_Controller {
     if (isset($alumno))
     $data['alumno']= $alumno->result();
 
-       
+
     $tutores=  $this->persona_model->obtener_tutores($id_alumno);
 
     if (isset($tutores))
@@ -424,7 +447,7 @@ class Welcome extends CI_Controller {
     $data['id_alumno']= $id_alumno;
 
     $this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('crear_usuario_alumno', $data);
   }
 
@@ -446,7 +469,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
    $this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('deberes', $data);
   }
 
@@ -468,7 +491,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
     $this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('modificar_alumno', $data);
   }
 
@@ -490,7 +513,7 @@ class Welcome extends CI_Controller {
     $data['id_alumno']=$id_alumno;
 
     $this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('usuarios_alumno', $data);
   }
 
@@ -511,7 +534,7 @@ class Welcome extends CI_Controller {
     $data['perfil']= $perfil->result();
 
     $this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('cambio_password', $data);
   }
 
@@ -534,7 +557,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
    	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('circulares', $data);
   }
 
@@ -547,11 +570,11 @@ class Welcome extends CI_Controller {
 
     $menu['rol']= $this->session->userdata('rol');
 
-  
+
      $this -> load -> view('header');
-     $this -> load -> view('menu', $menu);     
+     $this -> load -> view('menu', $menu);
    $this -> load -> view('crear_menu_semanal');
-  } 
+  }
 
   public function buscar_establecimientos()
   {
@@ -570,7 +593,7 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
     $this -> load -> view('header');
-    $this -> load -> view('menu', $menu);    
+    $this -> load -> view('menu', $menu);
     $this -> load -> view('buscar_establecimiento', $data);
   }
 
@@ -584,11 +607,11 @@ class Welcome extends CI_Controller {
 
     $menu['rol']= $this->session->userdata('rol');
 
-  
+
      $this -> load -> view('header');
-     $this -> load -> view('menu', $menu);     
+     $this -> load -> view('menu', $menu);
    $this -> load -> view('crear_establecimiento');
-  } 
+  }
 
 
    public function crear_circular()
@@ -600,11 +623,11 @@ class Welcome extends CI_Controller {
 
     $menu['rol']= $this->session->userdata('rol');
 
-  
+
      $this -> load -> view('header');
-     $this -> load -> view('menu', $menu);     
+     $this -> load -> view('menu', $menu);
    $this -> load -> view('crear_circular');
-  } 
+  }
 
 
 
