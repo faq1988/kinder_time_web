@@ -5,8 +5,13 @@ class Welcome extends CI_Controller {
 
 
 	public function index(){
+  $this -> load -> view('web_institucional');    
+  }
+  
 
-	if (!$this->session->userdata('username'))
+  public function login()
+  {
+    if (!$this->session->userdata('username'))
     {
       redirect('login');
     }
@@ -22,11 +27,11 @@ class Welcome extends CI_Controller {
     $header['ultimos_mensajes']= $ultimos_mensajes->result();
     $menu['rol']= $this->session->userdata('rol');
 
-	
+  
     
     $this -> load -> view('header', $header);
     $this -> load -> view('menu', $menu);
-	$this -> load -> view('estadisticas');
+    $this -> load -> view('estadisticas');
   }
 
 
