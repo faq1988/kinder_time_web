@@ -78,13 +78,16 @@ class Welcome extends CI_Controller {
 	 //verifico si el alumno tiene cargado un tutores
 	 //si tiene tutor precargo los datos
 	 $this -> load -> model('Persona_model');
-	 if($args[0])
-	 		$tutor=$this -> Persona_model -> obtener_tutores($args[0]);
+	 if($args[0]){
+		  $alumno=$args[0];
+	 		$tutor=$this -> Persona_model -> obtener_tutores($alumno);
+	 }
 	 else {
 	 	//MENSAJE DE ERROR 404
 	 }
 	 $data=array();
 	 $data['tutor']=$tutor;
+	 $data['alumno']=$alumno;
 		$this -> load -> view('header');
 		$this -> load -> view('menu', $menu);
 		$this -> load -> view('crear_editar_tutor',$data);

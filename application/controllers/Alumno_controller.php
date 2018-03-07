@@ -101,6 +101,9 @@ public function modificar_alumno()
     redirect('Welcome/buscar_alumno');
   }
 
-  
+  public function crear_editar_tutor(){
+		//inserto el tutor como persona, si ya existe lo actualizo
+		var_dump($this -> input -> post());
+	}
 
 }

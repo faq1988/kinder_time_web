@@ -22,10 +22,19 @@
                   <div class="card-body">
                     <p>Por favor ingrese los datos del Tutor</p>
                     <form action="<?=base_url()?>Alumno_controller/crear_editar_tutor" method="POST">
+                      <input name='alumno' value=<?php echo $alumno?> hidden />
                       <div class="form-group">
                         <label class="form-control-label">DNI</label>
                         <input type="text" name="dni" placeholder="DNI" class="form-control" value="<?php echo ($tutor) ? $tutor['dni']:'' ?>">
                       </div>
+                      <div class="form-group">
+                       <label class="form-control-label">relacion</label>
+                       <select name='tutor_tipe'>
+                         <option value=<?php echo MADRE ?> <?php echo (($tutor['vinculo']==MADRE) ? 'selected':'')?>> Madre</option>
+                         <option value=<?php echo PADRE ?> <?php echo (($tutor['vinculo']==PADRE) ? 'selected':'')?>> Padre</option>
+                         <option value=<?php echo TUTOR ?> <?php echo (($tutor['vinculo']==TUTOR) ? 'selected':'')?>> Tutor</option>
+                       </select>
+                     </div>
                        <div class="form-group">
                         <label class="form-control-label">Nombre</label>
                         <input type="text" name="nombre" placeholder="Nombre" class="form-control" value="<?php echo ($tutor) ? $tutor['nombre']:'' ?>">
