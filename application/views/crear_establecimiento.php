@@ -32,27 +32,39 @@
                       <form action="<?=base_url()?>Establecimiento_controller/agregar_establecimiento" method="POST">                        
                          <div class="form-group">       
                           <label class="form-control-label">Nombre</label>
-                          <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                          <input type="text" name="nombre" value="<?php echo set_value('nombre'); ?>"
+                          placeholder="Nombre" class="form-control">
+                          <?php echo form_error('nombre', '<span style="color:red">', '</span>'); ?>
                         </div>
                          <div class="form-group">       
                           <label class="form-control-label">Domicilio</label>
-                          <input type="text" name="domicilio" placeholder="Domicilio" class="form-control">
+                          <input type="text" name="domicilio" value="<?php echo set_value('domicilio'); ?>"
+                          placeholder="Domicilio" class="form-control">
+                          <?php echo form_error('domicilio', '<span style="color:red">', '</span>'); ?>
                         </div>
                          <div class="form-group">       
                           <label class="form-control-label">Ciudad</label>
-                          <input type="text" name="ciudad" placeholder="Ciudad" class="form-control">
+                          <input type="text" name="ciudad" value="<?php echo set_value('ciudad'); ?>"
+                          placeholder="Ciudad" class="form-control">
+                          <?php echo form_error('ciudad', '<span style="color:red">', '</span>'); ?>
                         </div>
                          <div class="form-group">       
                           <label class="form-control-label">País</label>
-                          <input type="text" name="pais" placeholder="País" class="form-control">
+                          <input type="text" name="pais" value="<?php echo set_value('pais'); ?>"
+                          placeholder="País" class="form-control">
+                          <?php echo form_error('pais', '<span style="color:red">', '</span>'); ?>
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Teléfono</label>
-                          <input type="text" name="telefono" placeholder="Teléfono" class="form-control">
+                          <input type="text" name="telefono" value="<?php echo set_value('telefono'); ?>"
+                          placeholder="Teléfono" class="form-control">
+                          <?php echo form_error('telefono', '<span style="color:red">', '</span>'); ?>
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Email</label>
-                          <input type="email" name="mail" placeholder="Email" class="form-control">
+                          <input type="email" name="mail" value="<?php echo set_value('mail'); ?>" 
+                          placeholder="Email" class="form-control">
+                          <?php echo form_error('mail', '<span style="color:red">', '</span>'); ?>
                         </div>
                        
                         <center>

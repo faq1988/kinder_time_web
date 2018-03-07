@@ -15,8 +15,24 @@ class Alumno_controller extends CI_Controller {
   public function crear_alumno()
   {
 
-
-      $data = array(
+       $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+      $this->form_validation->set_rules('apellido', 'Apellido', 'required');
+      $this->form_validation->set_rules('edad', 'Edad', 'required|numeric');
+      $this->form_validation->set_rules('dni', 'Dni', 'required|numeric');      
+      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+      $this->form_validation->set_rules('direccion', 'Dirección', 'required');
+      $this->form_validation->set_rules('ciudad', 'Ciudad', 'required');
+      
+      if ($this->form_validation->run() == FALSE)      
+      {
+          $menu['rol']= $this->session->userdata('rol');         
+          $this -> load -> view('header');
+          $this -> load -> view('menu', $menu);
+          $this -> load -> view('crear_alumno');
+      } 
+      else
+      {
+         $data = array(
       'nombre' => $this->input->post('nombre'),
       'apellido' => $this->input->post('apellido'),
       'edad' => $this->input->post('edad'),
@@ -27,10 +43,20 @@ class Alumno_controller extends CI_Controller {
 
       );
 
-
       $this->persona_model->crear_persona($data, 'ALUMNO');
 
       redirect("Welcome/buscar_alumno");
+      }
+    
+
+
+
+
+
+     
+
+
+      
   }
 
 	public function registrar_evento()

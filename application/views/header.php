@@ -114,9 +114,10 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle mr-lg-2" data-toggle="dropdown" href="#">
+                  <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-gear fa-fw"></i></a>
+                    <!--a class="nav-link dropdown-toggle mr-lg-2" data-toggle="dropdown" href="#">
                         <i class="fa fa-gear fa-fw"></i>
-                    </a>
+                    </a-->
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a class="dropdown-item" href="<?=base_url()?>welcome/ver_perfil"><i class="fa fa-user fa-fw"></i> Mi perfil</a>
                         </li>

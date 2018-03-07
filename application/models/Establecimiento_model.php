@@ -22,6 +22,12 @@ function insertar_establecimiento($data){
   		if ($query->num_rows() >0 ) return $query;//->result();
   			}
 
+
+function eliminar_establecimiento($id)
+	{
+		$this->db->where('id =', $id);
+		$this->db->delete('institucion');
+	}
 }
 
 

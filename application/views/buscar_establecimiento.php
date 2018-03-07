@@ -49,6 +49,7 @@
                             <th>Pais</th>
                             <th>Teléfono</th>
                             <th>Email</th>
+                            <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -63,6 +64,11 @@
                             <td><?php echo $establecimientos[$i]->pais;?></td>
                             <td><?php echo $establecimientos[$i]->telefono;?></td>
                             <td><?php echo $establecimientos[$i]->mail;?></td>
+                            <td>
+                                <a href="<?php echo base_url() ?>Welcome/ver_establecimiento/<?php echo $establecimientos[$i]->id; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>
+                                                         
+                                <a href="<?php echo base_url() ?>Establecimiento_controller/eliminar_establecimiento/<?php echo $establecimientos[$i]->id; ?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
+                              </td>
                           </tr>
                           <?php } }?>
                          

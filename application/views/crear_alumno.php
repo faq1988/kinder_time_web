@@ -32,31 +32,45 @@
                       <form action="<?=base_url()?>Alumno_controller/crear_alumno" method="POST">
                          <div class="form-group">       
                           <label class="form-control-label">Nombre</label>
-                          <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                          <input type="text" name="nombre" value="<?php echo set_value('nombre'); ?>"
+                          placeholder="Nombre" class="form-control">
+                          <?php echo form_error('nombre', '<span style="color:red">', '</span>'); ?>
                         </div>
                          <div class="form-group">       
                           <label class="form-control-label">Apellido</label>
-                          <input type="text" name="apellido" placeholder="Apellido" class="form-control">
+                          <input type="text" name="apellido" value="<?php echo set_value('apellido'); ?>"
+                          placeholder="Apellido" class="form-control">
+                          <?php echo form_error('apellido', '<span style="color:red">', '</span>'); ?>
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Edad</label>
-                          <input type="text" name="edad" placeholder="Edad" class="form-control">
+                          <input type="text" name="edad" value="<?php echo set_value('edad'); ?>"
+                          placeholder="Edad" class="form-control">
+                          <?php echo form_error('edad', '<span style="color:red">', '</span>'); ?>
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">DNI</label>
-                          <input type="text" name="dni" placeholder="DNI" class="form-control">
+                          <input type="text" name="dni" value="<?php echo set_value('dni'); ?>"
+                          placeholder="DNI" class="form-control">
+                          <?php echo form_error('dni', '<span style="color:red">', '</span>'); ?>
                         </div>
                         <div class="form-group">
                           <label class="form-control-label">Email</label>
-                          <input type="email" name="email" placeholder="Email Address" class="form-control">
+                          <input type="email" name="email" value="<?php echo set_value('email'); ?>"
+                          placeholder="Email Address" class="form-control">
+                          <?php echo form_error('email', '<span style="color:red">', '</span>'); ?>
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Dirección</label>
-                          <input type="text" name="direccion" placeholder="Dirección" class="form-control">
+                          <input type="text" name="direccion" value="<?php echo set_value('direccion'); ?>"
+                          placeholder="Dirección" class="form-control">
+                          <?php echo form_error('direccion', '<span style="color:red">', '</span>'); ?>
                         </div>
                         <div class="form-group">       
                           <label class="form-control-label">Ciudad</label>
-                          <input type="text" name="ciudad" placeholder="Ciudad" class="form-control">
+                          <input type="text" name="ciudad" value="<?php echo set_value('ciudad'); ?>"
+                          placeholder="Ciudad" class="form-control">
+                          <?php echo form_error('ciudad', '<span style="color:red">', '</span>'); ?>
                         </div>               
                          <center>
                         <div class="form-group">       
