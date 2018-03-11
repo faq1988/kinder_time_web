@@ -18,45 +18,36 @@ class Alumno_controller extends CI_Controller {
        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
       $this->form_validation->set_rules('apellido', 'Apellido', 'required');
       $this->form_validation->set_rules('edad', 'Edad', 'required|numeric');
-      $this->form_validation->set_rules('dni', 'Dni', 'required|numeric');      
+      $this->form_validation->set_rules('dni', 'Dni', 'required|numeric');
       $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
       $this->form_validation->set_rules('direccion', 'Dirección', 'required');
       $this->form_validation->set_rules('ciudad', 'Ciudad', 'required');
-      
-      if ($this->form_validation->run() == FALSE)      
+
+      if ($this->form_validation->run() == FALSE)
       {
-          $menu['rol']= $this->session->userdata('rol');         
+          $menu['rol']= $this->session->userdata('rol');
           $this -> load -> view('header');
           $this -> load -> view('menu', $menu);
           $this -> load -> view('crear_alumno');
-      } 
+      }
       else
       {
          $data = array(
-      'nombre' => $this->input->post('nombre'),
-      'apellido' => $this->input->post('apellido'),
-      'edad' => $this->input->post('edad'),
-      'dni' => $this->input->post('dni'),
-      'email' => $this->input->post('email'),
-      'direccion' => $this->input->post('direccion'),
-      'ciudad' => $this->input->post('ciudad'),
+		      'nombre' => $this->input->post('nombre'),
+		      'apellido' => $this->input->post('apellido'),
+		      'edad' => $this->input->post('edad'),
+					'tipo_doc' => $this->input->post('tipo_doc'),
+		      'doc' => $this->input->post('doc'),
+		      'email' => $this->input->post('email'),
+		      'direccion' => $this->input->post('direccion'),
+		      'ciudad' => $this->input->post('ciudad'),
 
       );
 
-      $this->persona_model->crear_persona($data, 'ALUMNO');
+      $this->persona_model->crear_persona($data, ALUMNO);
 
       redirect("Welcome/buscar_alumno");
       }
-    
-
-
-
-
-
-     
-
-
-      
   }
 
 	public function registrar_evento()
@@ -99,9 +90,8 @@ class Alumno_controller extends CI_Controller {
   public function eliminar_alumno()
   {
     $id_alumno = $this->uri->segment(3);
-
-    $this->persona_model->eliminar_persona($id_alumno);
-
+		$id_alumno_data=explode('-',$id_alumno);
+    $this->persona_model->eliminar_persona($id_alumno_data[0],$id_alumno_data[1]);
     redirect('Welcome/buscar_alumno');
   }
 

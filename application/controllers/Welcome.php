@@ -5,9 +5,9 @@ class Welcome extends CI_Controller {
 
 
 	public function index(){
-  $this -> load -> view('web_institucional');    
+  $this -> load -> view('web_institucional');
   }
-  
+
 
   public function login()
   {
@@ -18,10 +18,9 @@ class Welcome extends CI_Controller {
 
     $this->load->model('usuario_model');
     $usuario= $this->usuario_model->obtener_usuario($this->session->userdata('username')) ->result();
-
     $header=array();
     $this->load->model('sistema_model');
-    $ultimos_mensajes=  $this->sistema_model->obtener_ultimos_mensajes($usuario[0]->id_persona);
+    $ultimos_mensajes=  $this->sistema_model->obtener_ultimos_mensajes($usuario[0]-> tipo_doc,$usuario[0]-> doc);
 
     if (isset($ultimos_mensajes))
     $header['ultimos_mensajes']= $ultimos_mensajes->result();
@@ -71,7 +70,7 @@ class Welcome extends CI_Controller {
 	 $this -> load -> view('crear_alumno');
   }
 
-	public function crear_editar_tutor($args)
+	public function crear_editar_tutor()
  {
 	 if (!$this->session->userdata('username'))
 	 {
@@ -83,9 +82,11 @@ class Welcome extends CI_Controller {
 	 //verifico si el alumno tiene cargado un tutores
 	 //si tiene tutor precargo los datos
 	 $this -> load -> model('Persona_model');
-	 if($args[0]){
-		  $alumno=$args[0];
-	 		$tutor=$this -> Persona_model -> obtener_tutores($alumno);
+	 $tipo_doc_alumno=$this->uri->segment(3);
+	 $doc_alumno=$this->uri->segment(4);
+	 if(isset($tipo_doc_alumno) &&  $doc_alumno){
+		 $alumno=$tipo_doc_alumno.'|'.$doc_alumno;
+	 	 $tutor=$this -> Persona_model -> obtener_tutor($tipo_doc_alumno,$doc_alumno);
 	 }
 	 else {
 	 	//MENSAJE DE ERROR 404
@@ -123,7 +124,7 @@ class Welcome extends CI_Controller {
 
 		$data=array();
 		$this->load->model('persona_model');
-		$alumnos=  $this->persona_model->obtener_personas('ALUMNO');
+		$alumnos=  $this->persona_model->obtener_personas(ALUMNO);
 
 		if (isset($alumnos))
 		$data['alumnos']= $alumnos->result();
@@ -185,10 +186,10 @@ class Welcome extends CI_Controller {
 
     $data=array();
     $this->load->model('persona_model');
-    $alumnos=  $this->persona_model->obtener_personas('ALUMNO');
+    $alumnos=  $this->persona_model->obtener_personas(ALUMNO);
 
     if (isset($alumnos))
-    $data['alumnos']= $alumnos->result();
+    $data['alumnos']= $alumnos;
 
     $menu['rol']= $this->session->userdata('rol');
 
@@ -207,9 +208,8 @@ class Welcome extends CI_Controller {
     $data=array();
     $this->load->model('persona_model');
     $maestros=  $this->persona_model->obtener_personas('MAESTRO');
-
     if (isset($maestros))
-    $data['maestros']= $maestros->result();
+    $data['maestros']= $maestros;
 
     $menu['rol']= $this->session->userdata('rol');
 
@@ -416,11 +416,12 @@ class Welcome extends CI_Controller {
     }
     $data=array();
     $this->load->model('persona_model');
-    $id_alumno = $this->uri->segment(3);
+    $tipo_doc = $this->uri->segment(3);
+		$doc = $this->uri->segment(4);
 
-    $alumno= $this->persona_model->obtener_persona_por_id($id_alumno);
+    $alumno= $this->persona_model->obtener_persona($tipo_doc,$doc);
     if (isset($alumno))
-    $data['alumno']= $alumno->result();
+    $data['alumno']= $alumno;
     $menu['rol']= $this->session->userdata('rol');
 
     $this -> load -> view('header');

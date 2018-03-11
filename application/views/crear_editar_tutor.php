@@ -1,3 +1,10 @@
+<?php function map_documento($val){
+    switch($val){
+      case DNI: return 'D.N.I.';break;
+      case DNM: return 'D.N.M.';break;
+      case DNF: return 'D.N.F.';break;
+    }
+}?>
 <div class="content-inner">
         <!-- Page Header-->
         <header class="page-header">
@@ -21,14 +28,26 @@
                   </div-->
                   <div class="card-body">
                     <p>Por favor ingrese los datos del Tutor</p>
-                    <form action="<?=base_url()?>Alumno_controller/crear_editar_tutor" method="POST">
+                    <form id='form' action="<?=base_url()?>Alumno_controller/crear_editar_tutor" method="POST">
                       <input name='alumno' value=<?php echo $alumno?> hidden />
                       <div class="form-group">
-                        <label class="form-control-label">DNI</label>
-                        <input type="text" name="dni" placeholder="DNI" class="form-control" value="<?php echo ($tutor) ? $tutor['dni']:'' ?>">
+                        <label class="form-control-label">Tipo Documento</label>
+                        <select>
+                          <option value=<?php echo DNI ?>><?php echo map_documento(DNI)?></option>
+                          <option value=<?php echo DNM ?>><?php echo map_documento(DNM)?></option>
+                          <option value=<?php echo DNF ?>><?php echo map_documento(DNF)?></option>
+                        </select>
                       </div>
                       <div class="form-group">
-                       <label class="form-control-label">relacion</label>
+                        <label class="form-control-label">Documento</label>
+                        <input type="text" name="doc" placeholder="Documento" class="form-control" value="<?php echo ($tutor) ? $tutor['doc']:'' ?>">
+                      </div>
+                      <div class="form-group doc2" style="display: none;">
+                        <label class="form-control-label">Confirme Documento</label>
+                        <input type="text" name="doc2" placeholder="Documento" class="form-control" >
+                      </div>
+                      <div class="form-group">
+                       <label class="form-control-label">Relacion</label>
                        <select name='tutor_tipe'>
                          <option value=<?php echo MADRE ?> <?php echo (($tutor['vinculo']==MADRE) ? 'selected':'')?>> Madre</option>
                          <option value=<?php echo PADRE ?> <?php echo (($tutor['vinculo']==PADRE) ? 'selected':'')?>> Padre</option>
@@ -61,7 +80,7 @@
                       </div>
                        <center>
                       <div class="form-group">
-                        <input type="submit" value="Aceptar" class="btn btn-primary">
+                        <input id='btn_aceptar' value="Aceptar" class="btn btn-primary">
                       </div>
                       </center>
                     </form>
@@ -69,9 +88,6 @@
                 </div>
               </div>
               </div>
-
-
-
             </div>
           </div>
         </section>
@@ -92,3 +108,18 @@
   <script src="js/front.js"></script>
 </body>
 </html>
+
+<script>
+  $("input[name='doc']").focus(function(e){
+    $(".doc2").css('display','block');
+  });
+  $("#btn_aceptar").click(function(){
+    if($("input[name='doc']").val()!=$("input[name='doc2']").val()){
+      $("input[name='doc2']").val('');
+      alert('Los documentos ingresados no coinciden');
+    }
+    else{
+      $("#form").submit();
+    }
+  });
+</script>

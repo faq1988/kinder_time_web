@@ -85,7 +85,22 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
+//ESTADOS
+define('ACTIVO',1);
+define('INACTIVO',0);
+
+
 //TIPOS DE TUTORES
 define('PADRE',0);
 define('MADRE',1);
-define('TUTOR',2);
+
+//TIPOS DE DOCUIMENTO
+define('DNI',0);
+define('DNF',1);
+define('DNM',2);
+
+//ROLES
+define('ALUMNO',0);
+define('TUTOR',1);
+define('MAESTRO',2);
+define('ESTABLECIMIENTO',3);

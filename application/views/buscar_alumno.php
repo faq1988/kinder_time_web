@@ -1,3 +1,11 @@
+<?php function map_documento($val){
+    switch($val){
+      case DNI: return 'D.N.I.';break;
+      case DNM: return 'D.N.M.';break;
+      case DNF: return 'D.N.F.';break;
+    }
+}?>
+
 <div class="content-inner">
           <!-- Page Header-->
           <header class="page-header">
@@ -45,8 +53,8 @@
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>#</th>
-                            <th>DNI</th>
+                            <th>Tipo</th>
+                            <th>Documento</th>
                             <th>Nombre</th>
                             <th>Edad</th>
                             <th>Acciones</th>
@@ -57,14 +65,14 @@
                               if (isset($alumnos)){
                                for($i=0; $i<sizeof($alumnos); $i++){ ?>
                           <tr>
-                             <th scope="row"><?php echo $alumnos[$i]->id;?></th>
-                              <td><?php echo $alumnos[$i]->dni;?></td>
-                              <td><?php echo $alumnos[$i]->apellido;?>, <?php echo $alumnos[$i]->nombre;?></td>
-                              <td><?php echo $alumnos[$i]->edad;?></td>
+                             <td scope="row"><?php echo map_documento($alumnos[$i]['tipo_doc']);?></td>
+                             <td scope="row"><?php echo $alumnos[$i]['doc'];?></td>
+                              <td><?php echo $alumnos[$i]['apellido'];?>, <?php echo $alumnos[$i]['nombre'];?></td>
+                              <td><?php echo $alumnos[$i]['edad'];?></td>
                               <td>
-                                <a href="<?php echo base_url() ?>Welcome/ver_alumno/<?php echo $alumnos[$i]->id; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>
-                                <a href="<?php echo base_url() ?>Welcome/crear_editar_tutor/<?php echo $alumnos[$i]->id; ?>"> <i title="Agregar/Editar Tutor" class="fa fa-fw fa-user-circle"></i></a>
-                                <a href="<?php echo base_url() ?>Alumno_controller/eliminar_alumno/<?php echo $alumnos[$i]->id; ?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
+                                <a href="<?php echo base_url() ?>Welcome/ver_alumno/<?php echo $alumnos[$i]['tipo_doc'].'/'.$alumnos[$i]['doc']; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>
+                                <a href="<?php echo base_url() ?>Welcome/crear_editar_tutor/<?php echo  $alumnos[$i]['tipo_doc'].'/'.$alumnos[$i]['doc']; ?>"> <i title="Agregar/Editar Tutor" class="fa fa-fw fa-user-circle"></i></a>
+                                <a href="<?php echo base_url() ?>Alumno_controller/eliminar_alumno/<?php echo  $alumnos[$i]['tipo_doc'].'-'.$alumnos[$i]['doc'];?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
                               </td>
                           </tr>
                           <?php } }?>
