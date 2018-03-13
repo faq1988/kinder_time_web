@@ -105,13 +105,13 @@ DROP TABLE IF EXISTS hijos_por_tutores;
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
     `tipo_doc_tutor` tinyint(1) unsigned not null default 0,
     `doc_tutor` int(11) unsigned not null default 0,
-    `tipo_doc_alumno` tinyint(1) unsigned not null default 0,
-    `doc_alumno` int(11) unsigned not null default 0,
+    `tipo_doc_hijo` tinyint(1) unsigned not null default 0,
+    `doc_hijo` int(11) unsigned not null default 0,
     `vinculo` varchar(50) DEFAULT NULL,
     PRIMARY KEY (`id`)
   ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-  INSERT INTO `hijos_por_tutores` (`id`, `tipo_doc_tutor`,`doc_tutor`, `tipo_doc_alumno`,`doc_alumno`, `vinculo`) VALUES
+  INSERT INTO `hijos_por_tutores` (`id`, `tipo_doc_tutor`,`doc_tutor`, `tipo_doc_hijo`,`doc_hijo`, `vinculo`) VALUES
   	(1, 0,31212323, 0,32432234, 'PADRE');
 
 DROP TABLE IF EXISTS evento;

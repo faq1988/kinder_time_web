@@ -119,7 +119,8 @@ public function modificar_alumno()
 
   public function crear_editar_tutor(){
 		//inserto el tutor como persona, si ya existe lo actualizo
-		var_dump($this -> input -> post());
+		$this->persona_model->crear_persona($this -> input ->post(),TUTOR);
+    redirect('Welcome/buscar_alumno');
 	}
 
 }

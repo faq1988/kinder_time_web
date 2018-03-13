@@ -32,7 +32,7 @@
                       <input name='alumno' value=<?php echo $alumno?> hidden />
                       <div class="form-group">
                         <label class="form-control-label">Tipo Documento</label>
-                        <select>
+                        <select name='tipo_doc'>
                           <option value=<?php echo DNI ?>><?php echo map_documento(DNI)?></option>
                           <option value=<?php echo DNM ?>><?php echo map_documento(DNM)?></option>
                           <option value=<?php echo DNF ?>><?php echo map_documento(DNF)?></option>
@@ -48,7 +48,7 @@
                       </div>
                       <div class="form-group">
                        <label class="form-control-label">Relacion</label>
-                       <select name='tutor_tipe'>
+                       <select name='tutor_type'>
                          <option value=<?php echo MADRE ?> <?php echo (($tutor['vinculo']==MADRE) ? 'selected':'')?>> Madre</option>
                          <option value=<?php echo PADRE ?> <?php echo (($tutor['vinculo']==PADRE) ? 'selected':'')?>> Padre</option>
                          <option value=<?php echo TUTOR ?> <?php echo (($tutor['vinculo']==TUTOR) ? 'selected':'')?>> Tutor</option>
@@ -64,19 +64,19 @@
                       </div>
                       <div class="form-group">
                         <label class="form-control-label">Edad</label>
-                        <input type="text" name="edad" placeholder="Edad" class="form-control">
+                        <input type="text" name="edad" placeholder="Edad" class="form-control" value="<?php echo ($tutor) ? $tutor['edad']:'' ?>">
                       </div>
                       <div class="form-group">
                         <label class="form-control-label">Email</label>
-                        <input type="email" name="email" placeholder="Email Address" class="form-control">
+                        <input type="email" name="email" placeholder="Email Address" class="form-control"  value="<?php echo ($tutor) ? $tutor['email']:'' ?>">
                       </div>
                       <div class="form-group">
                         <label class="form-control-label">Dirección</label>
-                        <input type="text" name="direccion" placeholder="Dirección" class="form-control">
+                        <input type="text" name="direccion" placeholder="Dirección" class="form-control" value="<?php echo ($tutor) ? $tutor['direccion']:'' ?>">
                       </div>
                       <div class="form-group">
                         <label class="form-control-label">Ciudad</label>
-                        <input type="text" name="ciudad" placeholder="Ciudad" class="form-control">
+                        <input type="text" name="ciudad" placeholder="Ciudad" class="form-control" value="<?php echo ($tutor) ? $tutor['ciudad']:'' ?>">
                       </div>
                        <center>
                       <div class="form-group">

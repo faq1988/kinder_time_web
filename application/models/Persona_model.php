@@ -14,9 +14,9 @@ public function __construct()
 
 
 function crear_persona($data, $tipo){
+    $this->db->trans_start();
     switch($tipo){
       case ALUMNO: {
-        $this->db->trans_start();
           $qry="INSERT INTO persona (tipo_doc,doc,nombre,apellido,edad,nacimiento,email,direccion,ciudad,id_establecimiento)
                 VALUES({$data['tipo_doc']},{$data['doc']},'{$data['nombre']}', '{$data['apellido']}',
             			'{$data['edad']}','{$data['nacimiento']}', '{$data['email']}', '{$data['direccion']}','{$data['ciudad']}',0);";
@@ -24,13 +24,21 @@ function crear_persona($data, $tipo){
           $qry="INSERT INTO alumno  (tipo_doc,doc,st,ts)
                 VALUES({$data['tipo_doc']},{$data['doc']},1, sydsdate());";
           $this->db->simple_query($qry);
-        $this->db->trans_complete();
       }break;
       case MAESTRO: {
       }break;
       case TUTOR: {
+        $qry="INSERT INTO persona (tipo_doc,doc,nombre,apellido,edad,nacimiento,email,direccion,ciudad,id_establecimiento)
+              VALUES({$data['tipo_doc']},{$data['doc']},'{$data['nombre']}', '{$data['apellido']}',
+                '{$data['edad']}','{$data['nacimiento']}', '{$data['email']}', '{$data['direccion']}','{$data['ciudad']}',0);";
+        $this->db->simple_query($qry);
+        $aux=explode('|',$data['alumno']);
+        $qry="INSERT INTO hijos_por_tutores (tipo_doc_tutor,doc_tutor,tipo_doc_hijo,doc_hijo,vinculo)
+              VALUES({$data['tipo_doc']},{$data['doc']},{$aux[0]},{$aux[1]},{$data['tutor_type']});";
+        $this->db->simple_query($qry);
       }break;
     }
+    $this->db->trans_complete();
 	}
 
 
@@ -66,7 +74,7 @@ function crear_persona($data, $tipo){
   function obtener_tutor($tipo_doc_alumno,$doc_alumno){
     $qry="SELECT p.*,ht.vinculo FROM persona p
           JOIN hijos_por_tutores ht ON (p.tipo_doc=ht.tipo_doc_tutor AND p.doc=ht.doc_tutor)
-          WHERE ht.tipo_doc_alumno={$tipo_doc_alumno} AND ht.doc_alumno={$doc_alumno};";
+          WHERE ht.tipo_doc_hijo={$tipo_doc_alumno} AND ht.doc_hijo={$doc_alumno};";
     $res=$this->db->query($qry);
     if ($res->num_rows() >0 ) return $res -> row_array();
   }
