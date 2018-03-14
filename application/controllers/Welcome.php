@@ -670,5 +670,25 @@ class Welcome extends CI_Controller {
   }
 
 
+  public function ver_establecimiento()
+  {
+    if (!$this->session->userdata('username'))
+    {
+      redirect('login');
+    }
+    $data=array();
+    $this->load->model('Establecimiento_model');
+    $id_establecimiento = $this->uri->segment(3);   
+
+    $establecimiento= $this->Establecimiento_model->obtener_establecimiento($id_establecimiento);
+    if (isset($establecimiento))
+    $data['establecimiento']= $establecimiento->result();
+    $menu['rol']= $this->session->userdata('rol');
+
+    $this -> load -> view('header');
+    $this -> load -> view('menu', $menu);
+    $this -> load -> view('detalle_establecimiento', $data);
+  }
+
 
 }

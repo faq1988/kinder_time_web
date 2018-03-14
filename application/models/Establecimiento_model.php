@@ -28,6 +28,15 @@ function eliminar_establecimiento($id)
 		$this->db->where('id =', $id);
 		$this->db->delete('institucion');
 	}
+
+
+function obtener_establecimiento($id_establecimiento){    
+    $this->db->where('id', $id_establecimiento);
+    $query = $this->db->get('institucion');
+        if ($query->num_rows() >0 ) return $query;
+    
+  }
+
 }
 
 
