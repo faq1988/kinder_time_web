@@ -654,5 +654,21 @@ class Welcome extends CI_Controller {
   }
 
 
+  public function crear_aula()
+  {
+    if (!$this->session->userdata('username'))
+    {
+      redirect('login');
+    }
+
+    $menu['rol']= $this->session->userdata('rol');
+
+
+     $this -> load -> view('header');
+     $this -> load -> view('menu', $menu);
+   $this -> load -> view('crear_aula');
+  }
+
+
 
 }

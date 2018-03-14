@@ -28,7 +28,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" >
 
                                         <div class="list-group list-group-horizontal" style="display: inline-block">
-                                            <a href="<?=base_url()?>Welcome/buscar_aulas" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-plus"></i> Crear</a>    
+                                            <a href="<?=base_url()?>Welcome/crear_aula" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-plus"></i> Crear</a>    
                                             <a href="<?=base_url()?>Welcome/asignar_clases" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-arrow-circle-right"></i> Asignar</a>                                                                                        
                                         </div>
 
@@ -45,7 +45,7 @@
                            <th>#</th>
                             <th>Nombre</th>
                             <th>Capacidad</th>
-                            <th>Seleccionar</th>
+                            <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,9 @@
                              <th scope="row"><?php echo $aulas[$i]->id;?></th>
                               <td><?php echo $aulas[$i]->nombre;?></td>
                               <td><?php echo $aulas[$i]->capacidad;?></td>
-                              <?php echo "<td><input type='checkbox' name='lista_aulas[]' value='". $aulas[$i]->id . "' </td>"; ?>
+                              <td>
+                              <a href="<?php echo base_url() ?>Aulas_controller/eliminar_aula/<?php echo  $aulas[$i]->id;?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
+                              </td>
                           </tr>
                           <?php } }?>
                          

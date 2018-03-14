@@ -53,7 +53,11 @@ and l.tipo='ALUMNO'
 	}
 
 
-
+	function eliminar_aula($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('aula');
+	}
 
 
 
