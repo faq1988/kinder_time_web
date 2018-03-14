@@ -189,7 +189,7 @@ class Welcome extends CI_Controller {
     $alumnos=  $this->persona_model->obtener_personas(ALUMNO);
 
     if (isset($alumnos))
-    $data['alumnos']= $alumnos;
+    $data['alumnos']= $alumnos->result();
 
     $menu['rol']= $this->session->userdata('rol');
 
@@ -207,9 +207,9 @@ class Welcome extends CI_Controller {
 
     $data=array();
     $this->load->model('persona_model');
-    $maestros=  $this->persona_model->obtener_personas('MAESTRO');
+    $maestros=  $this->persona_model->obtener_personas(MAESTRO);
     if (isset($maestros))
-    $data['maestros']= $maestros;
+    $data['maestros']= $maestros->result();
 
     $menu['rol']= $this->session->userdata('rol');
 
@@ -421,12 +421,12 @@ class Welcome extends CI_Controller {
 
     $alumno= $this->persona_model->obtener_persona($tipo_doc,$doc);
     if (isset($alumno))
-    $data['alumno']= $alumno;
+    $data['alumno']= $alumno->result();
     $menu['rol']= $this->session->userdata('rol');
 
     $this -> load -> view('header');
     $this -> load -> view('menu', $menu);
-    $this -> load -> view('ver_alumno', $data);
+    $this -> load -> view('detalle_alumno', $data);
   }
 
 
@@ -583,6 +583,21 @@ class Welcome extends CI_Controller {
      $this -> load -> view('header');
      $this -> load -> view('menu', $menu);
    $this -> load -> view('crear_menu_semanal');
+  }
+
+  public function crear_tarea()
+  {
+    if (!$this->session->userdata('username'))
+    {
+      redirect('login');
+    }
+
+    $menu['rol']= $this->session->userdata('rol');
+
+
+     $this -> load -> view('header');
+     $this -> load -> view('menu', $menu);
+   $this -> load -> view('crear_tarea');
   }
 
   public function buscar_establecimientos()

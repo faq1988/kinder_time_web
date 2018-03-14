@@ -44,7 +44,8 @@ if ($q->num_rows() >0 ) return $q;//->result();
 public function obtener_perfil($username)
 {		
 		$this->db->from('usuario u');
-		$this->db->join('persona p', 'u.id_persona = p.id', 'left');		
+		$this->db->join('persona p', 'u.tipo_doc = p.tipo_doc and u.doc = p.doc', 'left');
+		//$this->db->join('persona p', 'u.doc = p.doc', 'left');		
 		$this->db->where('u.username =', $username);		
 		$query = $this->db->get();
   		if ($query->num_rows() >0 ) return $query;//->result();

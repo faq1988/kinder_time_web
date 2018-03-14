@@ -22,6 +22,21 @@
                       <h3 class="h4">Tareas</h3>
                     </div-->
                     <div class="card-body">
+                       <div class="row">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" >
+
+                                        <div class="list-group list-group-horizontal" style="display: inline-block">
+                                            <a href="<?=base_url()?>Welcome/crear_tarea" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-plus"></i> Crear</a>                                                                                                               
+                                        </div>
+
+                                    </div>
+
+
+                              </div>
+
+                            </br>
+
                       <table class="table">
                         <thead>                          
                           <tr>
@@ -31,7 +46,7 @@
                             <th>Materia</th>
                             <th>Descripcion</th>
                             <th>Entrega</th>
-                            <th>Seleccionar</th>
+                            
                           </tr>
                         </thead>
                         <tbody>
@@ -40,12 +55,12 @@
                                for($i=0; $i<sizeof($deberes); $i++){ ?>
                           <tr>
                             <th scope="row"><?php echo $deberes[$i]->id;?></th>
-                            <td><?php echo $deberes[$i]->id_alumno;?></td>
-                            <td><?php echo $deberes[$i]->id_maestro;?></td>
+                            <td><?php echo $deberes[$i]->doc_alumno;?></td>
+                            <td><?php echo $deberes[$i]->doc_maestro;?></td>
                             <td><?php echo $deberes[$i]->materia;?></td>
                             <td><?php echo $deberes[$i]->descripcion;?></td>
                             <td><?php echo $deberes[$i]->fecha_entrega;?></td>
-                            <?php echo "<td><input type='checkbox' name='lista_deberes[]' value='". $deberes[$i]->id . "' </td>"; ?>
+                            
                           </tr>
                           <?php } }?>
                          

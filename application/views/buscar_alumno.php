@@ -50,7 +50,7 @@
 
                             </br>
 
-                      <table class="table">
+                      <table id="tablaalumnos" class="table">
                         <thead>
                           <tr>
                             <th>Tipo</th>
@@ -65,14 +65,14 @@
                               if (isset($alumnos)){
                                for($i=0; $i<sizeof($alumnos); $i++){ ?>
                           <tr>
-                             <td scope="row"><?php echo map_documento($alumnos[$i]['tipo_doc']);?></td>
-                             <td scope="row"><?php echo $alumnos[$i]['doc'];?></td>
-                              <td><?php echo $alumnos[$i]['apellido'];?>, <?php echo $alumnos[$i]['nombre'];?></td>
-                              <td><?php echo $alumnos[$i]['edad'];?></td>
+                             <td scope="row"><?php echo $alumnos[$i]->tipo_doc;?></td>
+                             <td scope="row"><?php echo $alumnos[$i]->doc;?></td>
+                              <td><?php echo $alumnos[$i]->apellido;?>, <?php echo $alumnos[$i]->nombre;?></td>
+                              <td><?php echo $alumnos[$i]->edad;?></td>
                               <td>
-                                <a href="<?php echo base_url() ?>Welcome/ver_alumno/<?php echo $alumnos[$i]['tipo_doc'].'/'.$alumnos[$i]['doc']; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>
-                                <a href="<?php echo base_url() ?>Welcome/crear_editar_tutor/<?php echo  $alumnos[$i]['tipo_doc'].'/'.$alumnos[$i]['doc']; ?>"> <i title="Agregar/Editar Tutor" class="fa fa-fw fa-user-circle"></i></a>
-                                <a href="<?php echo base_url() ?>Alumno_controller/eliminar_alumno/<?php echo  $alumnos[$i]['tipo_doc'].'-'.$alumnos[$i]['doc'];?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
+                                <a href="<?php echo base_url() ?>Welcome/ver_alumno/<?php echo $alumnos[$i]->tipo_doc.'/'.$alumnos[$i]->doc; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>
+                                <a href="<?php echo base_url() ?>Welcome/crear_editar_tutor/<?php echo  $alumnos[$i]->tipo_doc.'/'.$alumnos[$i]->doc; ?>"> <i title="Agregar/Editar Tutor" class="fa fa-fw fa-user-circle"></i></a>
+                                <a href="<?php echo base_url() ?>Alumno_controller/eliminar_alumno/<?php echo  $alumnos[$i]->tipo_doc.'-'.$alumnos[$i]->doc;?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
                               </td>
                           </tr>
                           <?php } }?>
@@ -100,8 +100,48 @@
     <script src="<?=base_url()?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="<?=base_url()?>assets/vendor/chart.js/Chart.min.js"></script>
-    <script src="<?=base_url()?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="<?=base_url()?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>    
     <!-- Main File-->
-    <script src="<?=base_url()?>assets/js/front.js"></script>
+    <script src="<?=base_url()?>assets/js/front.js"></script>    
+    <script src="<?=base_url()?>assets/js/datatables/jquery.dataTables.js"></script>
+    <script src="<?=base_url()?>assets/js/datatables/dataTables.bootstrap4.js"></script>
+    
+
+
+    <script type="text/javascript">
+          $(document).ready(function() {
+           $('#tablaalumnos').DataTable( {
+                    "language": {
+                        "decimal":        "",
+                        "emptyTable":     "No hay datos para mostrar",
+                        "info":           "Mostrando _START_ a _END_ de _TOTAL_ filas",
+                        "infoEmpty":      "Mostrando 0 a 0 de 0 filas",
+                        "infoFiltered":   "(filtered from _MAX_ total entries)",
+                        "infoPostFix":    "",
+                        "thousands":      ",",
+                        "lengthMenu":     "Mostrar _MENU_ filas",
+                        "loadingRecords": "Cargando...",
+                        "processing":     "Procesando...",
+                        "search":         "Buscar:",
+                        "zeroRecords":    "No se encontraron resultados",
+                        "paginate": {
+                            "first":      "Primero",
+                            "last":       "Último",
+                            "next":       "Siguiente",
+                            "previous":   "Anterior"
+                        },
+                        "aria": {
+                            "sortAscending":  ": ordenar columna en orden ascendente",
+                            "sortDescending": ": ordenar columna en orden descendente"
+                        }
+                    }
+    } );
+
+
+
+          } );
+    </script>
+
+
   </body>
 </html>

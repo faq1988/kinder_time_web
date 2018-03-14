@@ -42,8 +42,8 @@
                           <tr>
                             <th scope="row"><?php echo $i+1;?></th>
                             <td><?php echo $autorizaciones[$i]->fechahora;?></td>
-                            <td><?php echo $autorizaciones[$i]->id_tutor;?></td>
-                            <td><?php echo $autorizaciones[$i]->id_alumno;?></td>
+                            <td><?php echo $autorizaciones[$i]->doc_tutor;?></td>
+                            <td><?php echo $autorizaciones[$i]->doc_alumno;?></td>
                             <td><?php echo $autorizaciones[$i]->asunto;?></td>
                             <td><?php echo $autorizaciones[$i]->descripcion;?></td>
                             <td><?php echo $autorizaciones[$i]->leido ? "SI" : "NO" ;?></td>

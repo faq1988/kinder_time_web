@@ -9,12 +9,13 @@ public function __construct()
 {
   parent::__construct();
 }
-/*
-function crear_deberes($id_alumno, $descripcion, $leido){
-		$this->db->insert('evento', array('id_alumno'=>$id_alumno,
-			'descripcion'=>$descripcion, 'leido'=>$leido));
+
+
+function crear_deberes($data){
+		$this->db->insert('deberes', array('fecha_entrega'=>$data['fecha'],
+			'descripcion'=>$data['descripcion'], 'materia'=>$data['materia']));
 	}
-*/
+
 
 
   function obtener_deberes(){
