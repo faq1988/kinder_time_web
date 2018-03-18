@@ -1,5 +1,5 @@
 
-      <div class="page-content d-flex align-items-stretch"> 
+      <div class="page-content d-flex align-items-stretch">
         <!-- Side Navbar -->
         <nav class="side-navbar">
           <!-- Sidebar Header-->
@@ -21,6 +21,9 @@
             <?php }?>
             <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
                     <li><a href="<?=base_url()?>welcome/buscar_maestros"> <i class="fa fa-graduation-cap"></i>Maestros </a></li>
+            <?php }?>
+            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
+                    <li><a href="<?=base_url()?>welcome/buscar_clases"> <i class="fa fa-group"></i>Clases </a></li>
             <?php }?>
             <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
                     <li><a href="<?=base_url()?>welcome/buscar_aulas"> <i class="fa fa-group"></i>Aulas </a></li>

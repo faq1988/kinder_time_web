@@ -47,16 +47,9 @@ function crear_persona($data, $tipo){
     $f_st=($estado) ? " AND p.st={$estado} ":"";
     switch($tipo){
       case ALUMNO: {
-        $this->db->from('persona p');
-        $this->db->join('alumno a', 'p.tipo_doc = a.tipo_doc and p.doc = a.doc');
-        $query = $this->db->get();
-        if ($query->num_rows() >0 ) return $query;//->result();
-        
-        /*
         $qry="SELECT p.* FROM persona p JOIN alumno a USING (tipo_doc,doc) WHERE 1 {$f_st};";
         $res=$this->db->query($qry);
         if ($res->num_rows() >0 ) return $res -> result_array();
-        */
       }break;
       case MAESTRO: {
         $qry="SELECT p.* FROM persona p JOIN alumnos_por_maestro hp ON (p.tipo_doc=hp.tipo_doc_maestro AND p.doc=hp.doc_maestro) WHERE 1 {$f_st};";

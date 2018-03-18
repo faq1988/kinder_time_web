@@ -189,11 +189,11 @@ class Welcome extends CI_Controller {
     $alumnos=  $this->persona_model->obtener_personas(ALUMNO);
 
     if (isset($alumnos))
-    $data['alumnos']= $alumnos->result();
+    $data['alumnos']= $alumnos;
 
     $menu['rol']= $this->session->userdata('rol');
 
-	$this -> load -> view('header');
+		$this -> load -> view('header');
     $this -> load -> view('menu', $menu);
     $this -> load -> view('buscar_alumno', $data);
   }
@@ -271,7 +271,7 @@ class Welcome extends CI_Controller {
     $alumnos= $this->clase_model->obtener_alumnos_sin_clase();
 
     if (isset($alumnos))
-    $data['alumnos']= $alumnos->result();
+    $data['alumnos']= $alumnos;
 
     $menu['rol']= $this->session->userdata('rol');
 
@@ -407,6 +407,27 @@ class Welcome extends CI_Controller {
     $this -> load -> view('buscar_aula', $data);
   }
 
+	public function buscar_clases()
+	{
+	 if (!$this->session->userdata('username'))
+		{
+			redirect('login');
+		}
+
+		$data=array();
+		$this->load->model('Clase_model');
+		//$alumnos=  $this->persona_model->obtener_personas('ALUMNO');
+		$clases= $this->Clase_model->obtener_clases();
+
+		if (isset($clases))
+		$data['clases']= $clases;
+
+		$menu['rol']= $this->session->userdata('rol');
+
+	$this -> load -> view('header');
+		$this -> load -> view('menu', $menu);
+		$this -> load -> view('buscar_aula', $data);
+	}
 
   public function ver_alumno()
   {
@@ -678,7 +699,7 @@ class Welcome extends CI_Controller {
     }
     $data=array();
     $this->load->model('Establecimiento_model');
-    $id_establecimiento = $this->uri->segment(3);   
+    $id_establecimiento = $this->uri->segment(3);
 
     $establecimiento= $this->Establecimiento_model->obtener_establecimiento($id_establecimiento);
     if (isset($establecimiento))

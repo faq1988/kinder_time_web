@@ -35,21 +35,19 @@ function insertar_alumno_clase($id_clase, $id_alumno){
 /*
 alumnos que no estan asignados a una clase
 SELECT l.id, l.dni, l.nombre, l.apellido, l.edad
-FROM   persona l 
+FROM   persona l
 LEFT   JOIN alumnos_por_clase i ON i.id_alumno = l.id
 WHERE  i.id_alumno IS NULL
 and l.tipo='ALUMNO'
 */
 	function obtener_alumnos_sin_clase()
 	{
-		$this->db->select('l.id, l.dni, l.nombre, l.apellido, l.edad');
-		$this->db->from('persona l');
-		$this->db->join('alumnos_por_clase i', 'i.id_alumno = l.id', 'left');
-		$where = "i.id_alumno is NULL and l.tipo='ALUMNO'";
-		$this->db->where($where);		
-		$query = $this->db->get();
-  		if ($query->num_rows() >0 ) return $query;//->result();
-
+    $qry="SELECT *
+          FROM persona p
+          JOIN alumnos_por_clase ac ON (p.tipo_doc=ac.tipo_doc_alumno AND  p.doc=ac.doc_alumno)
+          WHERE  p.doc IS NULL AND p.tipo_doc IS NUll";
+    $res=$this->db->query($qry);
+    if ($res->num_rows() >0 ) return $res -> result_array();
 	}
 
 

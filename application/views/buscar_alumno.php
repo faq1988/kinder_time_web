@@ -63,16 +63,16 @@
                         <tbody>
                           <?php
                               if (isset($alumnos)){
-                               for($i=0; $i<sizeof($alumnos); $i++){ ?>
+                               for($i=0; $i<count($alumnos); $i++){ ?>
                           <tr>
-                             <td scope="row"><?php echo $alumnos[$i]->tipo_doc;?></td>
-                             <td scope="row"><?php echo $alumnos[$i]->doc;?></td>
-                              <td><?php echo $alumnos[$i]->apellido;?>, <?php echo $alumnos[$i]->nombre;?></td>
-                              <td><?php echo $alumnos[$i]->edad;?></td>
+                             <td scope="row"><?php echo $alumnos[$i]['tipo_doc'];?></td>
+                             <td scope="row"><?php echo $alumnos[$i]['doc'];?></td>
+                              <td><?php echo $alumnos[$i]['apellido'];?>, <?php echo $alumnos[$i]['nombre'];?></td>
+                              <td><?php echo $alumnos[$i]['edad'];?></td>
                               <td>
-                                <a href="<?php echo base_url() ?>Welcome/ver_alumno/<?php echo $alumnos[$i]->tipo_doc.'/'.$alumnos[$i]->doc; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>
-                                <a href="<?php echo base_url() ?>Welcome/crear_editar_tutor/<?php echo  $alumnos[$i]->tipo_doc.'/'.$alumnos[$i]->doc; ?>"> <i title="Agregar/Editar Tutor" class="fa fa-fw fa-user-circle"></i></a>
-                                <a href="<?php echo base_url() ?>Alumno_controller/eliminar_alumno/<?php echo  $alumnos[$i]->tipo_doc.'-'.$alumnos[$i]->doc;?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
+                                <a href="<?php echo base_url() ?>Welcome/ver_alumno/<?php echo $alumnos[$i]['tipo_doc'].'/'.$alumnos[$i]['doc']; ?>"> <i title="Ver" class="fa fa-fw fa-eye"></i></a>
+                                <a href="<?php echo base_url() ?>Welcome/crear_editar_tutor/<?php echo  $alumnos[$i]['tipo_doc'].'/'.$alumnos[$i]['doc']; ?>"> <i title="Agregar/Editar Tutor" class="fa fa-fw fa-user-circle"></i></a>
+                                <a href="<?php echo base_url() ?>Alumno_controller/eliminar_alumno/<?php echo  $alumnos[$i]['tipo_doc'].'-'.$alumnos[$i]['doc'];?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
                               </td>
                           </tr>
                           <?php } }?>
@@ -100,12 +100,12 @@
     <script src="<?=base_url()?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="<?=base_url()?>assets/vendor/chart.js/Chart.min.js"></script>
-    <script src="<?=base_url()?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>    
+    <script src="<?=base_url()?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Main File-->
-    <script src="<?=base_url()?>assets/js/front.js"></script>    
+    <script src="<?=base_url()?>assets/js/front.js"></script>
     <script src="<?=base_url()?>assets/js/datatables/jquery.dataTables.js"></script>
     <script src="<?=base_url()?>assets/js/datatables/dataTables.bootstrap4.js"></script>
-    
+
 
 
     <script type="text/javascript">

@@ -184,3 +184,35 @@ DROP TABLE IF EXISTS alumnos_por_clase;
           INSERT INTO `alumnos_por_clase` (`id`, `id_clase`, `tipo_doc_alumno`,`doc_alumno`, `fecha_hora`) VALUES
           	(1, 2, 0,23141242, '2017-12-15 15:21:17'),
           	(2, 3, 0,32432234, '2018-02-26 17:30:30');
+
+
+CREATE TABLE IF NOT EXISTS `clase_aula` (
+  `id_clase` INT NOT NULL,
+  `id_aula` INT NOT NULL,
+  `st` TINYINT(2) NULL,
+  `ts` TIMESTAMP NULL,
+  PRIMARY KEY (`id_clase`, `id_aula`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `clase` (
+  `id_clase` INT UNSIGNED NOT NULL,
+  `descripcion` VARCHAR(100) NULL,
+  `hs_entrada` DATETIME NULL,
+  `hr_salida` DATETIME NULL,
+  `st` TINYINT(2) NULL,
+  `ts` TIMESTAMP NULL,
+  PRIMARY KEY (`id_clase`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `maestro_clase` (
+  `tipo_doc` tinyint(1) unsigned not null default 0,
+  `doc`  INT unsigned NOT NULL,
+  `id_clase` INT NOT NULL,
+  `desde` DATETIME NULL,
+  `st` TINYINT(2) NULL,
+  `ts` TIMESTAMP NULL,
+  PRIMARY KEY (`tipo_doc`,doc, `id_clase`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
