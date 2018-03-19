@@ -8,6 +8,19 @@ class Welcome extends CI_Controller {
   $this -> load -> view('web_institucional');
   }
 
+  public function contenido_header()
+  {
+    $this->load->model('usuario_model');
+    $usuario= $this->usuario_model->obtener_usuario($this->session->userdata('username')) ->result();
+    $header=array();
+    $this->load->model('sistema_model');
+    $ultimos_mensajes=  $this->sistema_model->obtener_ultimos_mensajes($usuario[0]-> tipo_doc,$usuario[0]-> doc);
+    if (isset($ultimos_mensajes))
+    $header['ultimos_mensajes']= $ultimos_mensajes->result();
+
+    return $header;
+  }
+
 
   public function login()
   {
@@ -50,11 +63,11 @@ class Welcome extends CI_Controller {
     $menu['rol']= $this->session->userdata('rol');
 
 	$this -> load -> view('header');
-    $this -> load -> view('menu', $menu);
+  $this -> load -> view('menu', $menu);
 	$this -> load -> view('eventos', $data);
   }
 
-
+  
    public function crear_alumno()
   {
   	if (!$this->session->userdata('username'))
@@ -230,7 +243,7 @@ class Welcome extends CI_Controller {
 
     $data=array();
     $this->load->model('sistema_model');
-    $mensajes=  $this->sistema_model->obtener_mensajes_alumno($usuario[0]->id_persona);
+    $mensajes=  $this->sistema_model->obtener_mensajes_alumno($usuario[0]->tipo_doc, $usuario[0]->doc);
 
     if (isset($mensajes))
     $data['mensajes']= $mensajes->result();
