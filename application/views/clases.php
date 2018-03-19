@@ -29,7 +29,26 @@
   ?>
 
 <center>
-<div class="btn-group btn-group-lg" data-toggle="buttons">
+
+  <label class="col-sm-3 form-control-label">Seleccionar aula</label>
+                          <div class="col-sm-9 select">
+                            <select name="aula" class="form-control">
+                              <option></option>
+                              <?php
+                              if (isset($aulas)){
+                               for($i=0; $i<sizeof($aulas); $i++){ ?>
+
+                              <option value="<?php echo $aulas[$i]->id;?>">
+                                <?php echo $aulas[$i]->nombre;?>                                  
+                              </option>
+                              
+                              <?php } }?>
+                            </select>
+                          </div>
+
+
+
+<!--div class="btn-group btn-group-lg" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio" name="clase" value="1" id="option1" autocomplete="off"> Sala uno
   </label>
@@ -40,7 +59,7 @@
     <input type="radio" name="clase" value="3" id="option3" autocomplete="off"> Sala tres
   </label>
 
-</div>
+</div-->
 
 </br>
 </br>

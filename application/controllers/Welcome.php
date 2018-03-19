@@ -269,9 +269,13 @@ class Welcome extends CI_Controller {
     $this->load->model('clase_model');
     //$alumnos=  $this->persona_model->obtener_personas('ALUMNO');
     $alumnos= $this->clase_model->obtener_alumnos_sin_clase();
+    $aulas= $this->clase_model->obtener_aulas();
 
     if (isset($alumnos))
     $data['alumnos']= $alumnos;
+
+    if (isset($aulas))
+    $data['aulas']= $aulas->result();
 
     $menu['rol']= $this->session->userdata('rol');
 
@@ -438,7 +442,7 @@ class Welcome extends CI_Controller {
 		$data=array();
 		$this->load->model('Clase_model');
 		$id=$this->uri->segment(3);
-		$clases= $this->Clase_model->obtener_clase(((isset($id)?$id:NULL),ACTIVO);
+		$clases= $this->Clase_model->obtener_clase((isset($id)?$id:NULL),ACTIVO);
 
 		if (isset($clases))
 		$data['clases']= $clases;
