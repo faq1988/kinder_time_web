@@ -45,6 +45,7 @@
                            <th>#</th>
                             <th>Nombre</th>
                             <th>Maestro</th>
+                            <th>Días</th>
                             <th>Duración</th>
                             <th>Capacidad</th>
                             <th>Acciones</th>

@@ -58,6 +58,14 @@ and l.tipo='ALUMNO'
 	}
 
 
+  function obtener_clase($id = NULL,$estado=ACTIVO){
+    $f_st=($estado) ? " AND st={$estado} ":"";
+    $f_id=($id) ? " AND id={$id} ":"";
+    $qry="SELECT * FROM clase WHERE 1 {$f_id} {$f_st}";
+    $res=$this->db->query($qry);
+    if ($res->num_rows() >0 ) return $res -> result_array();
+  }
+
 
 
 }

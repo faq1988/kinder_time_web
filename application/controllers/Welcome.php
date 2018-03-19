@@ -416,7 +416,6 @@ class Welcome extends CI_Controller {
 
 		$data=array();
 		$this->load->model('Clase_model');
-		//$alumnos=  $this->persona_model->obtener_personas('ALUMNO');
 		$clases= $this->Clase_model->obtener_clases();
 
 		if (isset($clases))
@@ -424,9 +423,31 @@ class Welcome extends CI_Controller {
 
 		$menu['rol']= $this->session->userdata('rol');
 
-	$this -> load -> view('header');
+		$this -> load -> view('header');
 		$this -> load -> view('menu', $menu);
-		$this -> load -> view('buscar_aula', $data);
+		$this -> load -> view('buscar_clases', $data);
+	}
+
+	public function crear_editar_clase()
+	{
+	 if (!$this->session->userdata('username'))
+		{
+			redirect('login');
+		}
+
+		$data=array();
+		$this->load->model('Clase_model');
+		$id=$this->uri->segment(3);
+		$clases= $this->Clase_model->obtener_clase(((isset($id)?$id:NULL),ACTIVO);
+
+		if (isset($clases))
+		$data['clases']= $clases;
+
+		$menu['rol']= $this->session->userdata('rol');
+
+		$this -> load -> view('header');
+		$this -> load -> view('menu', $menu);
+		$this -> load -> view('buscar_clases', $data);
 	}
 
   public function ver_alumno()

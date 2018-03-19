@@ -195,11 +195,13 @@ CREATE TABLE IF NOT EXISTS `clase_aula` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+drop table if exists clase;
 CREATE TABLE IF NOT EXISTS `clase` (
-  `id_clase` INT UNSIGNED NOT NULL,
+  `id_clase` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(100) NULL,
-  `hs_entrada` DATETIME NULL,
-  `hr_salida` DATETIME NULL,
+  dias char(7) not null default '0000000',
+  `hs_entrada` TIME NULL,
+  `hr_salida` TIME NULL,
   `st` TINYINT(2) NULL,
   `ts` TIMESTAMP NULL,
   PRIMARY KEY (`id_clase`))
@@ -216,3 +218,5 @@ CREATE TABLE IF NOT EXISTS `maestro_clase` (
   PRIMARY KEY (`tipo_doc`,doc, `id_clase`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+insert into clase values(0,'clase de mañana','1010100','09:00','14:00',1,sysdate());
