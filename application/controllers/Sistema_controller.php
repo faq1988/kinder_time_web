@@ -124,4 +124,90 @@ class Sistema_controller extends CI_Controller {
       redirect(welcome);
   }
 
+
+
+
+
+
+  public function sendMailAdmin($data)
+  {
+    //cargamos la libreria email de ci
+    $this->load->library("email");
+ 
+    //configuracion para gmail
+    $configGmail = array(
+      'protocol' => 'smtp',
+      'smtp_host' => 'mail.abtm.org.ar',
+      'smtp_port' => 25,
+      'smtp_user' => 'contacto@abtm.org.ar',
+      'smtp_pass' => 'abtm2016',
+      'mailtype' => 'html',
+      'charset' => 'utf-8',
+      'newline' => "\r\n"
+    );    
+   
+
+
+    //cargamos la configuración para enviar con gmail
+    $this->email->initialize($configGmail);
+ 
+    $this->email->from('contacto@abtm.org.ar');
+    $this->email->to('facu.carignano1988@gmail.com');
+    //$this->email->to('contacto.abtm.web@gmail.com');    
+    $this->email->subject('asunto del mail');
+        
+    $this->email->message('<h2>contenido del mail</h2>
+            <br>[DNI] = '. $data['dni'] .'
+            <br>[Nombre] = '. $data['nombre'] .'
+            <br>[Apellido] = '. $data['apellido'] .'
+            <br>[Correo electrónico] = '. $data['email'] .'
+            <br>[Teléfono] = '. $data['telefono'] .'
+            <br>[Categoría] = '. $data['categoria'] .'
+            <br>[Comentario] = '. $data['comentario']
+            );
+    $this->email->send();
+    //con esto podemos ver el resultado
+    //var_dump($this->email->print_debugger());
+  }
+
+  public function sendMailUser($data)
+  {
+    //cargamos la libreria email de ci
+    $this->load->library("email");
+ 
+    //configuracion para gmail
+    $configGmail = array(
+      'protocol' => 'smtp',
+      'smtp_host' => 'mail.abtm.org.ar',
+      'smtp_port' => 25,
+      'smtp_user' => 'contacto@abtm.org.ar',
+      'smtp_pass' => 'abtm2016',
+      'mailtype' => 'html',
+      'charset' => 'utf-8',
+      'newline' => "\r\n"
+    );   
+  
+ 
+    //cargamos la configuración para enviar con gmail
+    $this->email->initialize($configGmail);
+ 
+    $this->email->from('contacto@abtm.org.ar');
+    //$this->email->to('facu.carignano1988@gmail.com');
+    $this->email->to($data['email']);   
+    $this->email->subject('asunto del mail');
+        
+    $this->email->message('<h2>contenido del mail</h2>
+            <br>[DNI] = '. $data['dni'] .'
+            <br>[Nombre] = '. $data['nombre'] .'
+            <br>[Apellido] = '. $data['apellido'] .'
+            <br>[Correo electrónico] = '. $data['email'] .'
+            <br>[Teléfono] = '. $data['telefono'] .'
+            <br>[Categoría] = '. $data['categoria'] .'
+            <br>[Comentario] = '. $data['comentario'] .'
+            <hr><br> ABTM Web');
+    $this->email->send();
+    //con esto podemos ver el resultado
+    //var_dump($this->email->print_debugger());
+  }
+
 }

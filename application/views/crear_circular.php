@@ -34,6 +34,16 @@
                           <label class="form-control-label">Fecha</label>
                           <input type="date" name="fecha" placeholder="Fecha" class="form-control">
                         </div>
+
+                        <div class="form-group">       
+                        <label class="form-control-label">Enviar a</label>                          
+                            <select name="destino" class="form-control">
+                              <option></option>                              
+                              <option>Todos</option>
+                              <option>Una clase</option>
+                              <option>Un alumno</option>                                                           
+                            </select>                          
+                        </div>
                        
                          <div class="form-group">       
                           <label class="form-control-label">Asunto</label>
