@@ -1,8 +1,21 @@
+<?php
+  function map_dias($dias){
+    $days=array('Lun','Mar','Mie','Jue','Vie','Sab','Dom');
+    $darr=str_split($dias);
+    $res=array();
+    for ($i=0; $i < count($darr); $i++) {
+      if($darr[$i]){
+        array_push($res,$days[$i]);
+      }
+    }
+    return implode(',',$res);
+  }
+ ?>
 <div class="content-inner">
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom"><i class="fa fa-group"></i> Aulas</h2>
+              <h2 class="no-margin-bottom"><i class="fa fa-group"></i> Clases</h2>
             </div>
           </header>
           <!-- Breadcrumb-->
@@ -28,7 +41,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" >
 
                                         <div class="list-group list-group-horizontal" style="display: inline-block">
-                                            <a href="<?=base_url()?>Welcome/crear_aula" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-plus"></i> Crear</a>
+                                            <a href="<?=base_url()?>Welcome/crear_editar_clase" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-plus"></i> Crear</a>
                                             <a href="<?=base_url()?>Welcome/asignar_clases" class="list-group-item active btn" style="display: inline-block"><i class="fa fa-fw fa-arrow-circle-right"></i> Asignar</a>
                                         </div>
 
@@ -47,20 +60,21 @@
                             <th>Maestro</th>
                             <th>Días</th>
                             <th>Duración</th>
-                            <th>Capacidad</th>
                             <th>Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
                           <?php
-                              if (isset($aulas)){
-                               for($i=0; $i<sizeof($aulas); $i++){ ?>
+                              if (isset($clases)){
+                               for($i=0; $i<sizeof($clases); $i++){ ?>
                           <tr>
-                             <th scope="row"><?php echo $aulas[$i]->id;?></th>
-                              <td><?php echo $aulas[$i]->nombre;?></td>
-                              <td><?php echo $aulas[$i]->capacidad;?></td>
+                             <th scope="row"><?php echo $clases[$i]['id_clase'];?></th>
+                              <td><?php echo $clases[$i]['descripcion'];?></td>
+                              <td><?php echo $clases[$i]['descripcion'];?></td>
+                              <td><?php echo map_dias($clases[$i]['dias']);?></td>
+                              <td nowrap><?php echo 'entrada: '.$clases[$i]['hr_entrada'].' - salida: '.$clases[$i]['hr_salida'];?></td>
                               <td>
-                              <a href="<?php echo base_url() ?>Aulas_controller/eliminar_aula/<?php echo  $aulas[$i]->id;?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
+                              <a href="<?php echo base_url() ?>Clases_controller/eliminar_clase/<?php echo  $clases[$i]['id_clase'];?>"> <i title="Eliminar" class="fa fa-fw fa-trash-o"></i></a>
                               </td>
                           </tr>
                           <?php } }?>

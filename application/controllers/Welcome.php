@@ -67,7 +67,7 @@ class Welcome extends CI_Controller {
 	$this -> load -> view('eventos', $data);
   }
 
-  
+
    public function crear_alumno()
   {
   	if (!$this->session->userdata('username'))
@@ -433,7 +433,7 @@ class Welcome extends CI_Controller {
 
 		$data=array();
 		$this->load->model('Clase_model');
-		$clases= $this->Clase_model->obtener_clases();
+		$clases= $this->Clase_model->obtener_clase();
 
 		if (isset($clases))
 		$data['clases']= $clases;
@@ -453,18 +453,18 @@ class Welcome extends CI_Controller {
 		}
 
 		$data=array();
-		$this->load->model('Clase_model');
+		$this->load->model('persona_model');
 		$id=$this->uri->segment(3);
-		$clases= $this->Clase_model->obtener_clase((isset($id)?$id:NULL),ACTIVO);
+		$maestros=  $this->persona_model->obtener_personas('MAESTRO');
 
-		if (isset($clases))
-		$data['clases']= $clases;
+		if (isset($maestros))
+		$data['maestros']= $maestros;
 
 		$menu['rol']= $this->session->userdata('rol');
 
 		$this -> load -> view('header');
 		$this -> load -> view('menu', $menu);
-		$this -> load -> view('buscar_clases', $data);
+		$this -> load -> view('crear_editar_clase', $data);
 	}
 
   public function ver_alumno()
