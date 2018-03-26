@@ -29,7 +29,8 @@
                     </div-->
                     <div class="card-body">
                       <p>Por favor ingrese los datos requeridos para agregar un nuevo menú</p>
-                      <form action="<?=base_url()?>Menu_semanal_controller/agregar_menu" method="POST">
+                      <!--form action="<?=base_url()?>Menu_semanal_controller/agregar_menu" method="POST"-->
+                        <?php echo form_open('Menu_semanal_controller/agregar_menu'); ?>
                          <div class="form-group">       
                           <label class="form-control-label">Fecha</label>
                           <input type="date" name="fecha" value="<?php echo set_value('fecha'); ?>" placeholder="Fecha" class="form-control">

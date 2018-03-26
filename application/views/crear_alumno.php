@@ -29,7 +29,8 @@
                     </div-->
                     <div class="card-body">
                       <p>Por favor ingrese los datos del nuevo alumno</p>
-                      <form action="<?=base_url()?>Alumno_controller/crear_alumno" method="POST">
+                      <!--form action="<?=base_url()?>Alumno_controller/crear_alumno" method="POST"-->
+                        <?php echo form_open('Alumno_controller/crear_alumno'); ?>
                          <div class="form-group">       
                           <label class="form-control-label">Nombre</label>
                           <input type="text" name="nombre" value="<?php echo set_value('nombre'); ?>"

@@ -29,7 +29,8 @@
                     </div-->
                     <div class="card-body">
                       <p>Por favor ingrese los datos requeridos para agregar una nueva tarea</p>
-                      <form action="<?=base_url()?>Tareas_controller/agregar_tarea" method="POST">
+                      <!--form action="<?=base_url()?>Tareas_controller/agregar_tarea" method="POST"-->
+                        <?php echo form_open('Tareas_controller/agregar_tarea'); ?>
                          <div class="form-group">       
                           <label class="form-control-label">Fecha de entrega</label>
                           <input type="date" name="fecha" value="<?php echo set_value('fecha'); ?>" placeholder="Fecha de entrega" class="form-control">

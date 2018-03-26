@@ -29,7 +29,8 @@
                     </div-->
                     <div class="card-body">
                       <p>Por favor ingrese los datos requeridos para agregar un nuevo establecimiento</p>
-                      <form action="<?=base_url()?>Establecimiento_controller/agregar_establecimiento" method="POST">                        
+                      <!--form action="<?=base_url()?>Establecimiento_controller/agregar_establecimiento" method="POST"-->                        
+                        <?php echo form_open('Establecimiento_controller/agregar_establecimiento'); ?>
                          <div class="form-group">       
                           <label class="form-control-label">Nombre</label>
                           <input type="text" name="nombre" value="<?php echo set_value('nombre'); ?>"

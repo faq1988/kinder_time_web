@@ -28,7 +28,8 @@
                   </div-->
                   <div class="card-body">
                     <p>Por favor ingrese los datos del Tutor</p>
-                    <form id='form' action="<?=base_url()?>Alumno_controller/crear_editar_tutor" method="POST">
+                    <!--form id='form' action="<?=base_url()?>Alumno_controller/crear_editar_tutor" method="POST"-->
+                      <?php echo form_open('Alumno_controller/crear_editar_tutor'); ?>
                       <input name='alumno' value=<?php echo $alumno?> hidden />
                       <div class="form-group">
                         <label class="form-control-label">Tipo Documento</label>

@@ -31,7 +31,8 @@
                       <?php //echo validation_errors(); ?>
 
                       <p>Por favor ingrese los datos requeridos para realizar su consulta</p>
-                      <form action="<?=base_url()?>Sistema_controller/nuevo_contacto" method="POST">
+                      <!--form action="<?=base_url()?>Sistema_controller/nuevo_contacto" method="POST"-->
+                        <?php echo form_open('Sistema_controller/nuevo_contacto'); ?>
                          <div class="form-group">       
                           <label class="form-control-label">Nombre</label>
                           <input type="text" name="nombre" value="<?php echo set_value('nombre'); ?>"
