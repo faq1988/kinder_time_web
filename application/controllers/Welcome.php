@@ -199,7 +199,7 @@ class Welcome extends CI_Controller {
 
     $data=array();
     $this->load->model('persona_model');
-    $alumnos=  $this->persona_model->obtener_personas(ALUMNO);
+    $alumnos=  $this->persona_model->obtener_personas(ALUMNO, $this->session->userdata('establecimiento'));
 
     if (isset($alumnos))
     $data['alumnos']= $alumnos;

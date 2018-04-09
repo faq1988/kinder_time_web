@@ -43,11 +43,13 @@ function crear_persona($data, $tipo){
 
 
 
-  function obtener_personas($tipo,$estado = ACTIVO){
+  function obtener_personas($tipo, $establecimiento,$estado = ACTIVO){
     $f_st=($estado) ? " AND p.st={$estado} ":"";
     switch($tipo){
       case ALUMNO: {
-        $qry="SELECT p.* FROM persona p JOIN alumno a USING (tipo_doc,doc) WHERE 1 {$f_st};";
+        $qry="SELECT p.* FROM persona p JOIN alumno a USING (tipo_doc,doc) WHERE 1 
+        AND p.id_establecimiento={$establecimiento} {$f_st} 
+        ;";
         $res=$this->db->query($qry);
         if ($res->num_rows() >0 ) return $res -> result_array();
       }break;
