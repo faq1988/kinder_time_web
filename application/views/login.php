@@ -45,7 +45,8 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form id="login-form" method="POST">
+                  <!--form id="login-form" method="POST"-->
+                     <?php echo form_open('Login'); ?>
                     <div class="form-group">
                       <input id="login-username" type="text" name="username" required="" class="input-material">
                       <label for="login-username" class="label-material">Usuario</label>
