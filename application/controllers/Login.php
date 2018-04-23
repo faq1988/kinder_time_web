@@ -29,6 +29,8 @@ public function __construct()
             $this->session->set_userdata('tipo_doc_usuario', $usuario->tipo_doc);
             $this->session->set_userdata('doc_usuario', $usuario->doc);            
             $this->session->set_userdata('establecimiento', $usuario->id_establecimiento);
+            $this->session->set_userdata('nombre_usuario', $usuario->nombre);
+            $this->session->set_userdata('apellido_usuario', $usuario->apellido);
             redirect('welcome/login');
           }
           else

@@ -6,8 +6,8 @@
           <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="<?=base_url()?>assets/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
             <div class="title">
-              <h1 class="h4">Martín Daprotis</h1>
-              <!--p>Ingeniero en sistemas</p-->
+              <h1 class="h4"><?php echo $this->session->userdata('nombre_usuario');?></h1>
+              <p><?php echo $this->session->userdata('rol');?></p>
             </div>
           </div>
 

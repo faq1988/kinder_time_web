@@ -22,7 +22,7 @@
                       <h3 class="h4">Menú semanal</h3>
                     </div-->
                     <div class="card-body">
-
+                      <?php if ($rol != 'TUTOR') {?>
                        <div class="row">
 
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" >
@@ -35,7 +35,7 @@
 
 
                               </div>
-
+                        <?php }?>
                             </br>
 
                       <table class="table">
