@@ -31,7 +31,8 @@ class Tareas_controller extends CI_Controller {
       'fecha' => $this->input->post('fecha'),
       'materia' => $this->input->post('materia'),
       'descripcion' => $this->input->post('descripcion'),
-      
+      'tipo_doc_maestro' => $this->session->userdata('tipo_doc_usuario'),
+      'doc_maestro' => $this->session->userdata('doc_usuario')
       );
 
       $this->Deberes_model->crear_deberes($data);

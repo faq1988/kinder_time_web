@@ -22,7 +22,9 @@
                       <h3 class="h4">Tareas</h3>
                     </div-->
                     <div class="card-body">
-                       <div class="row">
+                      <?php if ($rol != 'TUTOR') {?>
+                       
+                              <div class="row">
 
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" >
 
@@ -34,6 +36,8 @@
 
 
                               </div>
+
+                        <?php }?>
 
                             </br>
 

@@ -44,7 +44,7 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-                <!-- Navbar Brand --><a href="<?=base_url()?>" class="navbar-brand">
+                <!-- Navbar Brand --><a href="<?=base_url()?>Welcome/login" class="navbar-brand">
                   <div class="brand-text brand-big"><span>Kinder </span><strong>Time</strong></div>
                   <div class="brand-text brand-small"><strong>KT</strong></div></a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>

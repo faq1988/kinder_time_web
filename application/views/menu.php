@@ -13,34 +13,34 @@
 
           <!-- Sidebar Navidation Menus--><span class="heading">Menú principal</span>
           <ul class="list-unstyled">
-            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
-                    <li class="active"><a href="<?=base_url()?>welcome/eventos"> <i class="icon-home"></i>Eventos </a></li>
+            <?php if ($rol == 'SUPERUSER' or $rol == 'TUTOR') {?>
+                    <li><a href="<?=base_url()?>welcome/eventos"> <i class="icon-home"></i>Eventos </a></li>
             <?php }?>
-            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
+            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO') {?>
                     <li><a href="<?=base_url()?>welcome/buscar_alumno"> <i class="fa fa-user"></i>Alumnos </a></li>
             <?php }?>
-            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
+            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO') {?>
                     <li><a href="<?=base_url()?>welcome/buscar_maestros"> <i class="fa fa-graduation-cap"></i>Maestros </a></li>
             <?php }?>
-            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
+            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO') {?>
                     <li><a href="<?=base_url()?>welcome/buscar_clases"> <i class="fa fa-group"></i>Clases </a></li>
             <?php }?>
-            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
+            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO') {?>
                     <li><a href="<?=base_url()?>welcome/buscar_aulas"> <i class="fa fa-group"></i>Aulas </a></li>
             <?php }?>
-            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
+            <?php if ($rol == 'SUPERUSER') {?>
                     <li><a href="<?=base_url()?>welcome/buscar_establecimientos"> <i class="fa fa-building"></i>Establecimientos </a></li>
             <?php }?>
             <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
                     <li><a href="<?=base_url()?>welcome/deberes_tareas"> <i class="icon-grid"></i>Tareas </a></li>
             <?php }?>
-            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
+            <?php if ($rol == 'SUPERUSER' or $rol == 'TUTOR') {?>
                     <li><a href="<?=base_url()?>welcome/estadisticas"> <i class="fa fa-bar-chart"></i>Estadísticas </a></li>
             <?php }?>
             <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
                     <li><a href="<?=base_url()?>welcome/menu_semanal"> <i class="fa fa-cutlery"></i>Menú semanal </a></li>
             <?php }?>
-            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>
+            <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO') {?>
                     <li><a href="<?=base_url()?>welcome/circulares"> <i class="fa fa-commenting-o"></i>Circulares </a></li>
             <?php }?>
             <?php if ($rol == 'SUPERUSER' or $rol == 'ESTABLECIMIENTO' or $rol == 'MAESTRO' or $rol == 'TUTOR') {?>

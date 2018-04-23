@@ -39,8 +39,6 @@ class Welcome extends CI_Controller {
     $header['ultimos_mensajes']= $ultimos_mensajes->result();
     $menu['rol']= $this->session->userdata('rol');
 
-
-
     $this -> load -> view('header', $header);
     $this -> load -> view('menu', $menu);
     $this -> load -> view('estadisticas');
@@ -526,16 +524,30 @@ class Welcome extends CI_Controller {
     {
       redirect('login');
     }
+    $rol=$this->session->userdata('rol');
+    $tipo_doc_usuario= $this->session->userdata('tipo_doc_usuario');
+    $doc_usuario= $this->session->userdata('doc_usuario');
+    $this->load->model('Persona_model');
+
+    $hijos= $this->Persona_model->obtener_hijo($tipo_doc_usuario, $doc_usuario);
 
     $data=array();
     $this->load->model('Deberes_model');
-    $deberes= $this->Deberes_model->obtener_deberes();
+
+    if ($rol=='TUTOR')
+      $deberes= $this->Deberes_model->obtener_deberes_tutor($tipo_doc_usuario, $doc_usuario);
+
+    if ($rol=='MAESTRO')
+      $deberes= $this->Deberes_model->obtener_deberes_maestro($tipo_doc_usuario, $doc_usuario);
+
+    if ($rol=='SUPERUSER')
+      $deberes= $this->Deberes_model->obtener_deberes();
 
     if (isset($deberes))
     $data['deberes']= $deberes->result();
 
     $menu['rol']= $this->session->userdata('rol');
-
+    
    $this -> load -> view('header');
     $this -> load -> view('menu', $menu);
     $this -> load -> view('deberes', $data);

@@ -87,6 +87,16 @@ function crear_persona($data, $tipo){
     if ($res->num_rows() >0 ) return $res -> row_array();
   }
 
+
+function obtener_hijo($tipo_doc_tutor,$doc_tutor){
+    $qry="SELECT p.* FROM persona p
+          JOIN hijos_por_tutores ht ON (p.tipo_doc=ht.tipo_doc_hijo AND p.doc=ht.doc_hijo)
+          WHERE ht.tipo_doc_tutor={$tipo_doc_tutor} AND ht.doc_tutor={$doc_tutor};";
+    $res=$this->db->query($qry);
+    if ($res->num_rows() >0 ) return $res -> row_array();
+  }
+
+
 function eliminar_persona($tipo_doc,$doc)
 	{
       $qry="UPDATE persona SET st=".INACTIVO." WHERE tipo_doc={$tipo_doc} AND doc={$doc};";
