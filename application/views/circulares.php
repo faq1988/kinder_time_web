@@ -42,8 +42,7 @@
                         <thead>                          
                           <tr>
                             <th>#</th>
-                            <th>Fecha</th>
-                            <th>Origen</th>
+                            <th>Fecha</th>                            
                             <th>Destino</th>
                             <th>Asunto</th>
                             <th>Mensaje</th>
@@ -56,8 +55,7 @@
                           <tr>
                             <th scope="row"><?php echo $circulares[$i]->id;?></th>
                             <td><?php echo $circulares[$i]->fechahora;?></td>
-                            <td><?php echo $circulares[$i]->usuario_origen;?></td>
-                            <td><?php echo $circulares[$i]->usuario_destino;?></td>
+                            <td><?php echo $circulares[$i]->apellido;?>, <?php echo $circulares[$i]->nombre;?></td>                            
                             <td><?php echo $circulares[$i]->asunto;?></td>
                             <td><?php echo $circulares[$i]->mensaje;?></td>
                           </tr>

@@ -716,12 +716,21 @@ class Welcome extends CI_Controller {
       redirect('login');
     }
 
+    $this->load->model('Clase_model');
+    $this->load->model('Persona_model');
     $menu['rol']= $this->session->userdata('rol');
 
+    $clases= $this->Clase_model->obtener_clases($this->session->userdata('establecimiento'));
+    $alumnos=$this->Persona_model->obtener_personas(ALUMNO, $this->session->userdata('establecimiento'));
+
+    if (isset($clases))
+      $data['clases']= $clases->result();
+    if (isset($alumnos))
+      $data['alumnos']= $alumnos;
 
      $this -> load -> view('header');
      $this -> load -> view('menu', $menu);
-   $this -> load -> view('crear_circular');
+   $this -> load -> view('crear_circular', $data);
   }
 
 

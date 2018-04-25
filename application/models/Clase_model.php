@@ -57,6 +57,11 @@ and l.tipo='ALUMNO'
 		$this->db->delete('aula');
 	}
 
+  function obtener_clases($establecimiento){
+      $this->db->where('establecimiento', $establecimiento);
+      $query = $this->db->get('clase');
+      if ($query->num_rows() >0 ) return $query;//->result();
+      }
 
   function obtener_clase($id = NULL,$estado=ACTIVO){
     $f_st=($estado) ? " AND st={$estado} ":"";
@@ -67,6 +72,12 @@ and l.tipo='ALUMNO'
   }
 
 
+  function obtener_alumnos_clase($clase){
+    $qry="SELECT p.tipo_doc_alumno as tipo_doc, p.doc_alumno as doc FROM alumnos_por_clase p
+          WHERE p.id_clase={$clase};";
+    $res=$this->db->query($qry);
+    if ($res->num_rows() >0 ) return $res -> result_array();
+  }
 
 }
 

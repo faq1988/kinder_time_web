@@ -14,7 +14,7 @@
           </div-->
         </br></br>
         <center>
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                   <div class="client card">
                    
                     <div class="card-body text-center">
